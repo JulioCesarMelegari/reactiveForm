@@ -1,0 +1,29 @@
+<body>
+    <div>
+        <header>
+            <h2>Cadastre-se</h2>
+            <em>Bem vindo ao nosso sistema</em>
+        </header>
+        
+        <div class="success" *ngIf="submitted">
+            <h2>Successo!</h2>
+            <em>Cadastro realizado com o nome de: {{ name.value }}</em>
+        </div>
+
+        <div *ngIf="!submitted">
+            <label >
+                <strong>Digite seu nome</strong>
+                <input type="text" [formControl]="name" />
+            </label>
+            <div [class.visible]="name.invalid && name.touched" class="error">
+                É necessário preencher com o nome
+            </div>
+            <button (click)="submitted = name.valid" [class.disabled]="name.invalid">
+                Continue
+            </button>
+        </div>
+
+    </div>
+
+    
+</body>
